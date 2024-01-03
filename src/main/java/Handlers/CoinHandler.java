@@ -1,17 +1,15 @@
-package coinApi;
-
+package Handlers;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+public class CoinHandler {
+    public static String sendGetRequest(String url) throws Exception {
+        HttpURLConnection connection = null;
 
-public class CurrencyExchangeRate {
-    public static void main(String[] args) {
         try {
-            String apiUrl = "https://economia.awesomeapi.com.br/last/USD-BRL";
-            URL url = new URL(apiUrl);
-
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            URL requestUrl = new URL(url);
+            connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setRequestMethod("GET");
 
             int responseCode = connection.getResponseCode();
@@ -26,15 +24,14 @@ public class CurrencyExchangeRate {
                 }
 
                 reader.close();
-
-                String exchangeRate = response.toString().split(":")[5].split(",")[0];
-                System.out.println("The last exchange rate for USD to BRL is: " + exchangeRate);
+                return response.toString();
             } else {
-                System.out.println("Failed to retrieve data. Response Code: " + responseCode);
+                throw new RuntimeException("Failed to retrieve data. Response Code: " + responseCode);
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
         }
     }
 }
