@@ -1,7 +1,5 @@
 package response;
 
-import CoinApiResponsePayload.CoinApiResponsePayload;
-
 public class CoinResponse extends Response {
 
     public float errorCode;
@@ -9,7 +7,7 @@ public class CoinResponse extends Response {
     public float httpStatusCode;
 
 
-    public CoinApiResponsePayload UsdBrl;
+    public CoinApiResponsePayload USDBRL;
 
     public CoinResponse(int statusCode, String statusMsg) {
         super(statusCode, statusMsg);

@@ -1,10 +1,15 @@
 package Handlers;
+
+import com.google.gson.Gson;
+import response.CoinResponse;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 public class CoinHandler {
-    public static String sendGetRequest(String url) throws Exception {
+    public static CoinResponse sendGetRequest(String url) throws Exception {
         HttpURLConnection connection = null;
 
         try {
@@ -24,7 +29,9 @@ public class CoinHandler {
                 }
 
                 reader.close();
-                return response.toString();
+
+                Gson gson = new Gson();
+                return gson.fromJson(response.toString(), CoinResponse.class);
             } else {
                 throw new RuntimeException("Failed to retrieve data. Response Code: " + responseCode);
             }

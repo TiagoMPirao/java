@@ -1,4 +1,4 @@
-package CoinApiResponsePayload;
+package response;
 
 public class CoinApiResponsePayload {
     public String code = null;
