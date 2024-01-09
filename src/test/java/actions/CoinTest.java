@@ -7,5 +7,4 @@ import response.CoinResponse;
 public class CoinTest extends CoinAction{
 
 
-
 }

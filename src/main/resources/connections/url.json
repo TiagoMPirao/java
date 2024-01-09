@@ -1,0 +1,8 @@
+{
+  "Endpoint":[
+    {
+      "Name": "CoinApi",
+      "Url": "https://economia.awesomeapi.com.br/json/last/USD-BRL"
+    }
+  ]
+}

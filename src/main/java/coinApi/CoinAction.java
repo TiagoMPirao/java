@@ -3,12 +3,16 @@ package coinApi;
 import Handlers.CoinHandler;
 import response.CoinResponse;
 
-// MainApplication.java
+
 public class CoinAction {
+
+
+    private String endpoint;
+
     public static void main(String[] args) {
         try {
-            String initialUrl = "https://economia.awesomeapi.com.br/json/last/USD-BRL";
-
+           String initialUrl = "https://economia.awesomeapi.com.br/json/last/USD-BRL";
+           // this.endpoint = endpoint;
 
             CoinResponse response = CoinHandler.sendGetRequest(initialUrl);
 
